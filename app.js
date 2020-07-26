@@ -31,7 +31,21 @@ function calculateResults(e) {
 function showError(error) {
     const errorDiv = document.createElement('div');
 
+    // Get elements
+    const card = document.querySelector('.card');
+    const heading = document.querySelector('.heading');
+
     errorDiv.className = 'alert alert-danger';
 
-    
+    errorDiv.appendChild(document.createTextNode(error));
+
+    // Insert error above heading
+    card.insertBefore(errorDiv, heading);
+
+    // Clear error after 3 seconds
+    setTimeout(clearError, 3000);
+}
+
+function clearError() {
+    document.querySelector('.alert').remove();
 }
